@@ -121,7 +121,7 @@ if ("serviceWork" in navigator) {
       console.log("Service worker registered with scope:", registration.scope);
     })
     .catch((error) => {
-      console.log("Service worker registered fail:", error);
+      console.log("Service worker registered failed:", error);
     });
 }
 
