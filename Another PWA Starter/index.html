@@ -8,21 +8,24 @@
     <link rel="manifest" href="joketracker.json" />
     <link rel="icon" href="assets/icons/icon-48x48.png" />
     <!-- Register the app's service worker. -->
-
     <script>
+      //with no error checking or once the app is debugged:
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("sw.js");
+      }
+
+      //with robust error checking for debugging:
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("sw.js").then(
           (registration) => {
-            console.log("service worker registration successful:",
-              registration);
+            console.log("service worker registration successful:", registration);
           },
           (error) => {
-            console.log("service worker registration failed:",
-              error);
+            console.error("service worker registration failed:", error);
           }
-        )
-      } else {
-        console.error("Service workers are not supported.")
+        );
+      }  else {
+        console.error("Service workers are not supported.");
       }
     </script>
   </head>
